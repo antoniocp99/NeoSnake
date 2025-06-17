@@ -1,0 +1,2123 @@
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#gameBoard {
+  border: 2px solid;
+  order: 2;
+  transition: 0.1s;
+  box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.75);
+  margin-top: 90px;
+  transition: 0.3s;
+}
+
+.game-btns {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 80px;
+  margin-top: 20px;
+}
+
+.botones-pausa {
+  width: 100px;
+}
+.botones-pausa button {
+  width: 100%;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #d3d3d3 0%, #b0b0b0 50%, #888888 100%);
+  border: 2px solid rgb(50, 50, 50);
+  border-bottom: 5px solid rgb(50, 50, 50);
+  transform: translate(0, -3px);
+  transition: 0.2s;
+  border-radius: 8px;
+}
+.botones-pausa button svg {
+  stroke: #888888;
+  color: #fff;
+}
+.botones-pausa button:active {
+  transform: translate(0, 0);
+  border-bottom: 2px solid rgb(50, 50, 50);
+}
+
+#resetBtn {
+  font-size: 22px;
+  font-weight: bold;
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.1s;
+  order: 3;
+  background: linear-gradient(to bottom, #a2d4f5, #63a4d7);
+  border: 2px solid rgb(50, 50, 50);
+  border-bottom: 5px solid rgb(50, 50, 50);
+  transform: translate(0, -3px);
+  z-index: 100;
+}
+#resetBtn span:last-child {
+  position: absolute;
+}
+#resetBtn:active {
+  transform: translate(0, 0);
+  border-bottom: 2px solid rgb(50, 50, 50);
+}
+
+.gameover-container, .pause-menu-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  inset: 0;
+  margin: auto;
+  top: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+}
+
+.container-juego {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 80px;
+  position: relative;
+}
+
+.best-score {
+  font-size: 30px;
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 4px;
+  border: 2px solid #424242;
+  text-shadow: -2px 2px 4px #000;
+  box-shadow: -4px 4px 8px #000;
+}
+.best-score span {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  order: 1;
+  padding: 0 30px;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: -4px 4px 4px #000;
+  text-shadow: -2px 2px 4px #000;
+  border-radius: 8px;
+  border: 2px solid #424242;
+  color: #fff;
+  position: absolute;
+  top: 0;
+}
+.score p {
+  font-size: 40px;
+}
+.score #scoreText {
+  font-size: 60px;
+}
+
+.gameover {
+  background: radial-gradient(circle, #c03945 0%, #6b111f 100%);
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  color: #fff;
+  animation: sombraNeon 3s infinite;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 10px;
+  border-radius: 8px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+.gameover div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid;
+}
+.gameover h2 {
+  font-size: 30px;
+}
+.gameover h3 {
+  font-size: 25px;
+}
+.gameover p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.pause-menu {
+  background: radial-gradient(circle, #3a8edc, #1a4f9c, #0d2a5a);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 1px 5px 4px rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 10px;
+  border-radius: 8px;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 10px;
+  border-radius: 8px;
+}
+.pause-menu div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid;
+}
+.pause-menu h2 {
+  font-size: 30px;
+}
+.pause-menu h3 {
+  font-size: 25px;
+}
+.pause-menu p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+.pause-menu .btn-continuar {
+  border: 2px solid rgb(3, 42, 3);
+  background: radial-gradient(circle, #209952, #1e8b4b, #14532d);
+  width: 150px;
+  height: 40px;
+  font-size: 25px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.pause-menu .btn-continuar:hover {
+  background: radial-gradient(circle, #85dfaa, #56a075, #39955e);
+}
+
+.flecha {
+  position: absolute;
+  left: 120px;
+  bottom: -270px;
+  transition: 0.2s;
+  animation: flecha-animada 1s linear infinite;
+}
+.flecha svg {
+  width: 100px;
+  height: 500px;
+  stroke-width: 2.5;
+  stroke: yellow;
+  filter: drop-shadow(-1px 2px 4px #000);
+}
+
+@keyframes flecha-animada {
+  0% {
+    transform: translateY(30px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(30px);
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at center, #8bc34a 0%, #558b2f 50%, #2e7d32 80%, #1b5e20 100%);
+  font-family: "Roboto", sans-serif;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  transition: 0.3s;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.oculto {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.invisible {
+  display: none;
+}
+
+.color-desactivado {
+  background-color: red !important;
+}
+
+.frutiger-bg {
+  background-image: url(../../src/img/frutiger.webp);
+  transition: 0.3s;
+}
+
+.retro-bg {
+  background-image: url(../../src/img/retro.jpg);
+  transition: 0.3s;
+}
+
+.girar-flecha {
+  transform: rotate(-180deg);
+}
+
+.arrow-down, .arrow-down-2, .arrow-down-3, .arrow-down-4 {
+  transition: 0.2s;
+}
+
+.borde-abierto {
+  border-radius: 4px 4px 0 0 !important;
+}
+
+.dificultad-menu {
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 130px;
+  margin-top: -1px;
+  position: relative;
+}
+.dificultad-menu p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #262626;
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  transition: 0.3s;
+  border: 2px solid #424242;
+  z-index: 5;
+}
+.dificultad-menu p:hover {
+  background-color: #424242;
+}
+.dificultad-menu .dificultades {
+  border: 2px solid #424242;
+  border-radius: 4px;
+  position: absolute;
+  top: 35px;
+  width: 98%;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: #329f00;
+  color: #fff;
+  z-index: 1;
+}
+.dificultad-menu .dificultades .dificultad {
+  width: 100%;
+  padding: 5px;
+}
+.dificultad-menu .dificultades .dificultad:hover {
+  background-color: lightgreen;
+}
+.dificultad-menu .dificultades .dificultad:nth-child(2) {
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626;
+}
+
+.s-reproductor {
+  stroke: #4caf50 !important;
+}
+
+.height-menu {
+  height: 350px;
+}
+
+.cancion.sonando {
+  background-color: lightgreen !important;
+}
+
+.color-icono-1-repetir {
+  color: #4caf50 !important;
+}
+
+.elegir-cancion {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  background-color: green;
+  color: #fff;
+  font-size: 25px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  box-shadow: -4px 4px 4px #000;
+  transition: 1s;
+  animation: flotar 2s linear infinite;
+}
+
+@keyframes flotar {
+  0% {
+    transform: translateY(0) translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(0) translateX(-50%) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) translateX(-50%) scale(1);
+  }
+}
+.botones-izquierda {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 50px;
+  width: 100%;
+}
+
+.recognition-btn-container {
+  margin-top: -1px;
+  padding: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.recognition-btn-container svg {
+  background-color: #262626;
+  border-radius: 50%;
+  padding: 5px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  z-index: 1;
+  transition: 0.5s;
+  animation: bg-svg 2s linear infinite;
+}
+
+@keyframes bg-svg {
+  0% {
+    fill: #fff;
+  }
+  50% {
+    fill: lightgreen;
+  }
+  100% {
+    fill: #fff;
+  }
+}
+.btn-mando {
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+  background-color: #262626;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #424242;
+}
+.btn-mando:hover {
+  background-color: #424242;
+}
+.btn-mando:hover svg {
+  transform: translateY(-38px);
+  opacity: 1;
+}
+.btn-mando span {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.btn-mando svg {
+  z-index: 1;
+  position: absolute;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: #262626;
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+  stroke-width: 2;
+  transition: 0.5s;
+}
+
+#retro {
+  background: radial-gradient(circle at center, #d56aff 0%, #9f00e1 40%, #6d0091 70%, #2e003e 100%);
+  color: #fff;
+  text-align: center;
+}
+#retro p {
+  text-shadow: -2px 2px 2px #000;
+}
+#retro p:hover {
+  background-color: rgb(176, 133, 219);
+}
+
+#frutiger {
+  background: radial-gradient(circle at center, #00fffb 0%, #5ed1ff 30%, #00afe4 65%, #93fffa 100%);
+  color: #fff;
+}
+#frutiger p {
+  text-shadow: -2px 2px 2px #000;
+}
+#frutiger p:hover {
+  background-color: rgb(136, 233, 255);
+}
+
+#main {
+  background: radial-gradient(circle at center, #8bc34a 0%, #558b2f 50%, #2e7d32 80%, #1b5e20 100%);
+  color: #fff;
+}
+#main p {
+  text-shadow: -2px 2px 2px #000;
+}
+#main:hover {
+  background: radial-gradient(circle at center, #a8d575 0%, #c1eca3 50%, #8ddc91 80%, #96e59b 100%);
+}
+
+.snake-logo {
+  user-select: none;
+  transform: rotateY(180deg) translateY(0);
+  position: absolute;
+  top: 0px;
+  filter: drop-shadow(2px 2px 5px #000000);
+  width: 80px;
+  height: 80px;
+}
+
+#snake-logo {
+  right: 0;
+}
+
+#snake-logo-2 {
+  transform: rotateY(0) translateY(0);
+  user-select: none;
+  left: 0;
+}
+
+.anim-celebracion {
+  animation: celebracion 0.5s linear infinite;
+}
+
+.anim-celebracion2 {
+  animation: celebracion2 0.5s linear infinite;
+}
+
+@keyframes celebracion {
+  0% {
+    transform: rotateY(180deg) translateY(0);
+  }
+  50% {
+    transform: rotateY(180deg) translateY(-30px);
+  }
+  100% {
+    transform: rotateY(180deg) translateY(0);
+  }
+}
+@keyframes celebracion2 {
+  0% {
+    transform: rotateY(0) translateY(0);
+  }
+  50% {
+    transform: rotateY(0) translateY(-30px);
+  }
+  100% {
+    transform: rotateY(0) translateY(0);
+  }
+}
+.botones-izquierda-abajo {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 50px;
+  top: 80px;
+  left: 0;
+}
+
+.board-bg-container {
+  position: relative;
+}
+
+.notificacion-mando-1 {
+  position: fixed;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
+  top: 0;
+  left: 50%;
+  text-align: center;
+  background: radial-gradient(circle, #3a8edc, #1a4f9c, #0d2a5a);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  box-shadow: 0px 1px 5px 4px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  transform: translate(-50%);
+  z-index: 100;
+  border-radius: 0 0 8px 8px;
+  transition: 1s;
+  width: 520px;
+}
+.notificacion-mando-1 .icono-mando-2 {
+  width: 100px;
+  height: 100px;
+  animation: mando-animado 2s linear infinite;
+}
+.notificacion-mando-1 .icono-cerrar {
+  background-color: #ff0000;
+  position: absolute;
+  right: -1.5px;
+  top: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.notificacion-mando-1 .icono-cerrar:hover {
+  background-color: #a90000;
+}
+
+@keyframes mando-animado {
+  0% {
+    filter: drop-shadow(0);
+    stroke: #fff;
+  }
+  50% {
+    filter: drop-shadow(5px 5px 10px #80ff00);
+    stroke: #80ff00;
+  }
+}
+.esconder-noti {
+  transform: translate(-50%, -180px);
+}
+
+.mando-conectado {
+  background: radial-gradient(circle, #4caf50, #2e7d32, #1b5e20);
+}
+
+.controles-container {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: -4px 4px 8px #000;
+  border: 2px solid #424242;
+}
+.controles-container .controles {
+  width: 400px;
+  height: 500px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.controles-container .controles .seleccion-controles {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #424242;
+  position: absolute;
+  top: 0;
+  background-color: #262626;
+}
+.controles-container .controles .seleccion-controles svg {
+  width: 80px;
+  height: 80px;
+  transition: 0.3s;
+}
+.controles-container .controles .seleccion-controles svg:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(-4px 4px 8px #000);
+}
+
+.teclado, .mando {
+  width: 100%;
+  position: absolute;
+  top: 85px;
+}
+.teclado .icono-control, .mando .icono-control {
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #262626;
+}
+.teclado .icono-control svg, .mando .icono-control svg {
+  width: 80px;
+  height: 80px;
+  cursor: default;
+}
+
+.def-controles {
+  overflow-y: scroll;
+  width: 100%;
+  height: 365px;
+  scrollbar-width: thin;
+  background-color: green;
+  border-radius: 0 0 8px 8px;
+  scrollbar-color: #fff #262626;
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  font-weight: bold;
+  color: #fff;
+}
+.control:last-child {
+  border: none;
+}
+.control .icono-control-2 {
+  width: 30%;
+  height: 100%;
+  border-right: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  stroke: #fff;
+  background-color: #262626;
+}
+.control .icono-control-2 svg {
+  cursor: default;
+}
+.control .texto-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 10px 0;
+  letter-spacing: 0.5px;
+  font-weight: normal;
+}
+
+.mando .icono-control {
+  position: absolute;
+  top: 0;
+  padding: 35px 0;
+}
+.mando .container-img-mando {
+  position: absolute;
+  left: 50%;
+  top: 71px;
+  transform: translate(-50%);
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  height: 154px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.mando .container-img-mando .mando-xbox {
+  width: 180px;
+  height: 120px;
+}
+.mando .container-img-mando .mando-ps5 {
+  width: 290px;
+  height: 160px;
+}
+.mando .def-controles {
+  position: absolute;
+  height: 200px;
+  top: 225px;
+}
+.mando .def-controles .control .icono-control-2 img {
+  width: 25px;
+  height: 25px;
+}
+
+#selector-mando {
+  position: absolute;
+  right: 30px;
+  text-align: center;
+  font-weight: bold;
+  outline: none;
+  border: 2px solid #424242;
+  padding: 3px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#selector-mando option {
+  font-weight: bold;
+}
+
+.comandos-voz-container {
+  width: 400px;
+  height: 400px;
+  background-color: green;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  overflow: hidden;
+  box-shadow: -4px 4px 10px #000;
+  border-radius: 5px;
+  border: 2px solid #424242;
+  transition: 1s;
+}
+.comandos-voz-container h2 {
+  width: 100%;
+  text-align: center;
+  background-color: #262626;
+  color: #fff;
+  padding: 5px;
+  border-bottom: 1px solid #424242;
+}
+.comandos-voz-container .comandos {
+  width: 100%;
+  height: 357px;
+  color: #fff;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #fff #262626;
+}
+.comandos-voz-container .comandos .comando {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid;
+  font-size: 20px;
+}
+.comandos-voz-container .comandos .comando:last-child {
+  border-bottom: none;
+}
+.comandos-voz-container .comandos .comando p:first-child {
+  width: 30%;
+  border-right: 1px solid;
+  text-align: center;
+  padding: 10px;
+  background-color: #262626;
+}
+.comandos-voz-container .comandos .comando p:last-child {
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 1400px) {
+  .resolucion-permitida {
+    display: none;
+  }
+  .resolucion-no-permitida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background: radial-gradient(circle at center, #8bc34a 0%, #558b2f 50%, #2e7d32 80%, #1b5e20 100%);
+    color: #fff;
+  }
+  .resolucion-no-permitida p {
+    text-shadow: -2px 2px 4px #000;
+    text-align: center;
+    font-size: 25px;
+    line-height: 28px;
+  }
+  .resolucion-no-permitida img {
+    width: 300px;
+    height: 400px;
+  }
+}
+.desc-comandos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border-bottom: 1px solid;
+  background-color: #262626;
+}
+.desc-comandos p:first-child {
+  width: 30%;
+  text-align: center;
+  border-right: 1px solid #424242;
+  padding: 10px;
+}
+.desc-comandos p:last-child {
+  width: 70%;
+  text-align: center;
+  padding: 10px;
+}
+
+.scale {
+  transform: scale(0.5);
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+.playlist-container {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 400px;
+  transition: 1s;
+  overflow: hidden;
+  box-shadow: -5px 3px 5px 0px rgb(0, 0, 0);
+  border-radius: 10px 10px 0 0;
+  border: 2px solid #424242;
+  border-bottom: none;
+}
+
+#menu-playlist-btn {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(26, 26, 26);
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#menu-playlist-btn p {
+  font-size: 25px;
+  color: #fff;
+  user-select: none;
+  position: relative;
+  gap: 8px;
+}
+#menu-playlist-btn p svg {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -30px;
+  top: 4px;
+}
+
+.menu-playlist-container {
+  width: 100%;
+  height: 500px;
+  background-color: rgb(26, 26, 26);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  border-top: 1px solid white;
+}
+
+#menu-playlist {
+  width: 100%;
+  font-size: 30px;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: white rgb(26, 26, 26);
+  z-index: 8;
+  background-color: transparent;
+}
+#menu-playlist .cancion {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid white;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: green;
+}
+#menu-playlist .cancion:hover {
+  background-color: lightgreen;
+}
+#menu-playlist .cancion-img {
+  width: 70px;
+  height: 70px;
+  user-select: none;
+}
+#menu-playlist .datos {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  gap: 10px;
+  width: 100%;
+  user-select: none;
+}
+#menu-playlist .datos .autor {
+  position: absolute;
+  left: 10px;
+}
+#menu-playlist .datos .titulo {
+  text-align: center;
+}
+#menu-playlist .datos .duracion {
+  position: absolute;
+  right: 10px;
+}
+
+#reproductor-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.reproductor {
+  width: 100%;
+  height: 150px;
+  background-color: rgb(26, 26, 26);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  border-top: 1px solid #fff;
+  transition: 1s;
+  z-index: 9;
+}
+
+.controles {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px;
+}
+.controles svg {
+  cursor: pointer;
+}
+
+.barra-progreso {
+  position: relative;
+  width: 68%;
+  height: 10px;
+  background-color: #ddd;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.barra-relleno {
+  position: absolute;
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.tiempo-transcurrido {
+  color: #fff;
+  position: absolute;
+  left: 10px;
+  top: 77px;
+}
+
+.tiempo-restante {
+  color: #fff;
+  position: absolute;
+  right: 10px;
+  top: 77px;
+}
+
+.handle {
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition: 0.3s;
+}
+.handle:hover {
+  width: 20px;
+  height: 20px;
+}
+
+#display-cancion {
+  height: 60px;
+  width: 80%;
+  position: absolute;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+#display-cancion img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #4caf50;
+}
+#display-cancion h2 {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.volumen {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.volumen .iconos-volumen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.volumen .iconos-volumen svg {
+  stroke: #fff;
+  cursor: pointer;
+  margin-right: 20px;
+}
+.volumen .iconos-volumen svg:active {
+  stroke: #4caf50;
+}
+.volumen #volume-off {
+  background: transparent;
+}
+.volumen .control-volumen {
+  accent-color: #4caf50;
+  position: absolute;
+  width: 90px;
+  left: 25px;
+}
+
+.repetir-container {
+  position: absolute;
+  left: -45px;
+  bottom: 3px;
+  z-index: 2;
+}
+.repetir-container #icono-repetir-1 {
+  position: absolute;
+  font-size: 10px;
+  color: #fff;
+  top: 6.65px;
+  left: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
+}
+
+.volumen-container {
+  position: absolute;
+  right: 90px;
+  bottom: 17px;
+}
+
+.centrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 300px;
+}
+
+.siguiente-cancion:active, .cancion-anterior:active, .play-music:active, .stop-music:active {
+  stroke: #4caf50;
+  fill: #4caf50;
+}
+
+.girar-img-cancion {
+  animation: rotar 8s linear infinite;
+}
+
+@keyframes rotar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.esconder {
+  transform: translateY(500px);
+}
+
+.oculto-rep {
+  transform: translateY(350px);
+  z-index: 7;
+}
+
+@keyframes sombraNeon {
+  0% {
+    box-shadow: 0 0 5px #ff4c5b, 0 0 10px #ff4c5b, 0 0 20px #ff1a2a, 0 0 40px #ff1a2a;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff4c5b, 0 0 20px #ff4c5b, 0 0 40px #ff1a2a, 0 0 80px #ff1a2a;
+  }
+  100% {
+    box-shadow: 0 0 5px #ff4c5b, 0 0 10px #ff4c5b, 0 0 20px #ff1a2a, 0 0 40px #ff1a2a;
+  }
+}
+.container-centro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 700px;
+}
+
+.container-izquierda {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 500px;
+  height: 700px;
+}
+
+.container-derecha {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+  width: 500px;
+  height: 700px;
+  gap: 50px;
+}
+
+.audio {
+  order: 1;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-right: 25px;
+}
+.audio .audio__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.audio .audio__container span {
+  position: absolute;
+  width: 130px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+  left: -95px;
+  z-index: 2;
+  padding: 6px 0 6px 5px;
+  border-radius: 50px;
+  color: #fff;
+}
+.audio .audio__container .desactivar {
+  width: 150px;
+  left: -120px;
+}
+.audio svg {
+  padding: 5px;
+  border-radius: 50px;
+  background-color: #3dbd01;
+  width: 30px;
+  height: 30px;
+  stroke: #fff;
+  z-index: 3;
+  box-shadow: -4px 4px 4px #000;
+}
+.audio svg:hover {
+  box-shadow: 0 0 0;
+}
+.audio:hover span {
+  opacity: 1;
+  visibility: visible;
+  background-color: #3dbd01;
+  transform: translate(-15px);
+  border-radius: 50px 20px 20px 50px;
+  box-shadow: -4px 4px 4px #000;
+}
+.audio:hover svg {
+  box-shadow: 0 0 0;
+}
+
+.select-tema {
+  font-size: 20px;
+  width: 200px;
+  z-index: 6;
+}
+.select-tema p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #262626;
+  padding: 5px;
+  border: 2px solid #424242;
+  color: #fff;
+  transition: 0.3s;
+}
+.select-tema p:hover {
+  background-color: #424242;
+}
+.select-tema .menu-temas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 2px solid #424242;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+.select-tema .menu-temas .tema {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+  z-index: 5;
+}
+.select-tema .menu-temas .tema p {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 10px;
+  backdrop-filter: blur(3px);
+  letter-spacing: 1px;
+  width: 100%;
+  height: 100%;
+}
+.select-tema .menu-temas .tema:hover {
+  background-color: lightgreen;
+}
+.select-tema .menu-temas .tema:nth-child(2) {
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626;
+}
+
+.btn-musica {
+  order: 2;
+  font-size: 20px;
+}
+.btn-musica button {
+  width: 190px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  background-color: #262626;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  transition: 0.3s;
+  border: 2px solid #424242;
+}
+.btn-musica button:hover {
+  background-color: #424242;
+}
+
+.dificultad-menu {
+  order: 3;
+}
+
+.container-ocultador {
+  transition: 0.3s;
+}
+
+.botones-izquierda #tema-title, .botones-izquierda button {
+  color: #fff;
+  background-color: #262626;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 0.3s;
+  width: 200px;
+  border: 2px solid #424242;
+}
+.botones-izquierda #tema-title:hover, .botones-izquierda button:hover {
+  background-color: #424242;
+}
+
+.recognition-btn {
+  z-index: 3;
+  width: 200px;
+}
+.recognition-btn:hover ~ .icono-micro-recognition {
+  transform: translateY(-35px);
+  opacity: 1;
+}
+
+.board-bg-container {
+  position: relative;
+}
+.board-bg-container .board-bg {
+  color: #fff;
+  background-color: #262626;
+  border: none;
+  font-size: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: 0.3s;
+  width: 205px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #424242;
+}
+.board-bg-container .board-bg span {
+  margin-right: 20px;
+}
+.board-bg-container .board-bg svg {
+  position: absolute;
+  right: 12px;
+}
+.board-bg-container .board-bg:hover {
+  background-color: #424242;
+}
+
+.colores-board {
+  position: absolute;
+  border: 2px solid #424242;
+  top: 32px;
+  width: 100%;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+}
+.colores-board .color {
+  width: 100%;
+  padding: 10px;
+  color: #fff;
+  text-shadow: -2px 2px 2px #000;
+}
+.colores-board .color:nth-child(2) {
+  border-top: 2px solid #262626;
+  border-bottom: 2px solid #262626;
+}
+.colores-board .verde {
+  background-color: #4ddf4f;
+}
+.colores-board .verde:hover {
+  background-color: #92ff94;
+}
+.colores-board .azul {
+  background-color: #00ffee;
+}
+.colores-board .azul:hover {
+  background-color: #85fbf3;
+}
+.colores-board .morado {
+  background-color: #6a0dad;
+}
+.colores-board .morado:hover {
+  background-color: #894db4;
+}
+
+.notificacion-voz {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  background: radial-gradient(circle, #4caf50, #2e7d32, #1b5e20);
+  padding: 10px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0px 2px 5px 4px rgba(0, 0, 0, 0.75);
+  text-shadow: -2px 2px 4px #000;
+}
+
+.notificacion-voz-container {
+  transition: 0.5s;
+  transform: translateY(-100px) translateX(-50%);
+  position: fixed;
+  top: 0;
+  left: 50%;
+}
+
+.notificacion-voz-mostrar {
+  transform: translateY(0) translateX(-50%);
+}
+
+.frutiger-bg .recognition-btn, .frutiger-bg #tema-title, .frutiger-bg .board-bg, .frutiger-bg .btn-mando, .frutiger-bg .btn-musica button, .frutiger-bg .dificultad-menu p {
+  background: radial-gradient(circle, rgb(0, 208, 255) 0%, rgb(34, 145, 176) 100%);
+  box-shadow: inset 0 8px 12px rgba(255, 255, 255, 0.15), inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(0, 90, 110) !important;
+  text-shadow: 1px 1px 2px rgba(0, 50, 70, 0.8), 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+  box-shadow: -2px 2px 5px #424242;
+}
+.frutiger-bg .recognition-btn:hover, .frutiger-bg #tema-title:hover, .frutiger-bg .board-bg:hover, .frutiger-bg .btn-mando:hover, .frutiger-bg .btn-musica button:hover, .frutiger-bg .dificultad-menu p:hover {
+  background: rgb(141, 240, 255) !important;
+}
+.frutiger-bg .score, .frutiger-bg .best-score {
+  border: 1px solid rgb(0, 90, 110) !important;
+  box-shadow: -4px 4px 4px #262626;
+}
+.frutiger-bg #gameBoard {
+  border: 3px solid rgb(61, 209, 242);
+  box-shadow: 0px 0px 10px 6px rgb(0, 90, 110);
+}
+.frutiger-bg .comandos-voz-container {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: -4px 4px 10px #424242;
+  border: 3px solid #f6f6f6;
+}
+.frutiger-bg .comandos-voz-container h2 {
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+  color: #000;
+  border-bottom: 1px solid rgb(0, 90, 110);
+}
+.frutiger-bg .comandos-voz-container .comandos {
+  color: #000;
+  scrollbar-color: #fff #262626;
+}
+.frutiger-bg .comandos-voz-container .comandos .comando {
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  text-shadow: -2px 2px 4px #000;
+}
+.frutiger-bg .comandos-voz-container .comandos .comando p:first-child {
+  background: transparent;
+}
+.frutiger-bg .desc-comandos {
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+  font-weight: bold;
+  border-bottom: 1px solid rgb(0, 90, 110);
+}
+.frutiger-bg .desc-comandos p:first-child {
+  border-right: 1px solid rgb(0, 90, 110);
+}
+.frutiger-bg .controles-container {
+  box-shadow: -4px 4px 8px #424242;
+  border: 2px solid #f6f6f6;
+}
+.frutiger-bg .controles-container .controles .seleccion-controles {
+  border-bottom: 1px solid rgb(0, 90, 110);
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+.frutiger-bg .icono-control {
+  border-bottom: 1px solid rgb(0, 90, 110);
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+.frutiger-bg .def-controles {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  text-shadow: -2px 2px 4px #000;
+  scrollbar-color: #fff #262626;
+}
+.frutiger-bg .icono-control-2 {
+  background-color: transparent;
+}
+.frutiger-bg .menu-temas {
+  border: 2px solid rgb(0, 90, 110);
+}
+.frutiger-bg .colores-board {
+  border: 2px solid rgb(0, 90, 110);
+}
+.frutiger-bg .dificultades {
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+  color: #000;
+  border: 2px solid rgb(0, 90, 110);
+}
+.frutiger-bg .dificultades .dificultad:hover {
+  background: radial-gradient(circle, rgb(0, 208, 255) 0%, rgb(34, 145, 176) 100%) !important;
+}
+.frutiger-bg .playlist-container {
+  border: 2px solid #f6f6f6;
+  border-bottom: none;
+}
+.frutiger-bg #menu-playlist-btn {
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+.frutiger-bg #menu-playlist-btn p {
+  color: #000;
+}
+.frutiger-bg #menu-playlist-btn svg {
+  stroke: #000;
+}
+.frutiger-bg .menu-playlist-container {
+  background-color: transparent;
+}
+.frutiger-bg .cancion {
+  background: rgb(0, 109, 125) !important;
+  text-shadow: -2px 2px 4px #000;
+}
+.frutiger-bg .cancion:hover {
+  background: rgb(44, 227, 255) !important;
+}
+.frutiger-bg .reproductor {
+  background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+.frutiger-bg .barra-progreso {
+  background-color: #262626;
+}
+.frutiger-bg .barra-relleno {
+  background-color: rgb(44, 227, 255);
+}
+.frutiger-bg .tiempo-restante, .frutiger-bg .tiempo-transcurrido {
+  color: #000;
+}
+.frutiger-bg .handle {
+  background-color: rgb(7, 135, 154);
+}
+.frutiger-bg #display-cancion img {
+  border: 3px solid rgb(44, 227, 255);
+}
+.frutiger-bg #display-cancion h2 {
+  color: #000;
+}
+.frutiger-bg .iconos-volumen svg {
+  stroke: #000;
+}
+.frutiger-bg .iconos-volumen svg:active {
+  stroke: rgb(49, 217, 255);
+}
+.frutiger-bg .control-volumen {
+  accent-color: rgb(49, 217, 255);
+}
+.frutiger-bg #icono-repetir-1 {
+  color: #000;
+}
+.frutiger-bg .siguiente-cancion, .frutiger-bg .cancion-anterior, .frutiger-bg .play-music, .frutiger-bg .stop-music {
+  stroke: #000;
+  fill: #000;
+}
+.frutiger-bg .siguiente-cancion:active, .frutiger-bg .cancion-anterior:active, .frutiger-bg .play-music:active, .frutiger-bg .stop-music:active {
+  stroke: rgb(49, 217, 255);
+  fill: rgb(49, 217, 255);
+}
+.frutiger-bg .repetir-container svg {
+  stroke: #000;
+}
+
+.retro-bg .recognition-btn, .retro-bg #tema-title, .retro-bg .board-bg, .retro-bg .btn-mando, .retro-bg .btn-musica button, .retro-bg .dificultad-menu p {
+  background-color: rgb(11, 173, 209);
+  box-shadow: inset 0 8px 12px rgba(255, 255, 255, 0.15), inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid cyan !important;
+  text-shadow: 1px 1px 2px rgba(0, 50, 70, 0.8), 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: 0.3s;
+  box-shadow: 0 0 15px cyan;
+}
+.retro-bg .recognition-btn:hover, .retro-bg #tema-title:hover, .retro-bg .board-bg:hover, .retro-bg .btn-mando:hover, .retro-bg .btn-musica button:hover, .retro-bg .dificultad-menu p:hover {
+  background: rgb(141, 240, 255) !important;
+}
+.retro-bg .score, .retro-bg .best-score {
+  border: 1px solid #6C3483 !important;
+  box-shadow: 0 0 15px #6C3483, 0 0 15px #6C3483 inset;
+  background: radial-gradient(circle, #520a83 0%, #210c36 100%);
+  color: cyan;
+  text-shadow: 0 0 15px cyan;
+}
+.retro-bg #gameBoard {
+  border: 3px solid rgb(61, 209, 242);
+  box-shadow: 0px 0px 10px 6px rgb(0, 90, 110);
+}
+.retro-bg .comandos-voz-container {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 0px 10px #9B59B6;
+  border: 2px solid #9B59B6;
+}
+.retro-bg .comandos-voz-container h2 {
+  background: #1A1A2E;
+  color: #ffffff;
+  border-bottom: 1px solid #9B59B6;
+}
+.retro-bg .comandos-voz-container .comandos {
+  color: #fff;
+  scrollbar-color: #fff #1A1A2E;
+}
+.retro-bg .comandos-voz-container .comandos .comando {
+  border-bottom: 1px solid #9B59B6;
+  color: #fff;
+  text-shadow: -2px 2px 4px #000;
+  background: #33045a;
+}
+.retro-bg .comandos-voz-container .comandos .comando p:first-child {
+  background: #33045a;
+  border-right: 1px solid #9B59B6;
+}
+.retro-bg .desc-comandos {
+  background: #1A1A2E;
+  font-weight: bold;
+  border-bottom: 1px solid #9B59B6;
+}
+.retro-bg .desc-comandos p:first-child {
+  border-right: 1px solid #9B59B6;
+}
+.retro-bg .controles-container {
+  box-shadow: 0px 0px 15px #9B59B6;
+  border: 2px solid #9B59B6;
+}
+.retro-bg .controles-container .controles .seleccion-controles {
+  border-bottom: 1px solid #9B59B6;
+  background: #1A1A2E;
+}
+.retro-bg .control {
+  border-bottom: 1px solid #9B59B6;
+}
+.retro-bg .icono-control {
+  border-bottom: 1px solid #9B59B6;
+  background: #1A1A2E;
+}
+.retro-bg .def-controles {
+  background-color: #33045a;
+  text-shadow: -2px 2px 4px #000;
+  scrollbar-color: #fff #1A1A2E;
+}
+.retro-bg .icono-control-2 {
+  background-color: #33045a;
+  border-right: 1px solid #9B59B6;
+}
+.retro-bg .menu-temas {
+  border: 2px solid cyan;
+}
+.retro-bg .colores-board {
+  border: 2px solid cyan;
+}
+.retro-bg .dificultades {
+  background: #450085;
+  color: #fff;
+  border: 2px solid cyan;
+}
+.retro-bg .dificultades .dificultad:nth-child(2) {
+  border-top: 1px solid cyan;
+  border-bottom: 1px solid cyan;
+}
+.retro-bg .dificultades .dificultad:hover {
+  background: #833abe !important;
+}
+.retro-bg .playlist-container {
+  border: 2px solid #9B59B6;
+  border-bottom: none;
+  box-shadow: 0 0 20px #9B59B6;
+}
+.retro-bg #menu-playlist-btn {
+  background: #1A1A2E;
+}
+.retro-bg #menu-playlist-btn p {
+  color: #fff;
+}
+.retro-bg #menu-playlist-btn svg {
+  stroke: #fff;
+}
+.retro-bg .menu-playlist-container {
+  background-color: transparent;
+  border-top: 1px solid #9B59B6;
+}
+.retro-bg .cancion {
+  background: #33045a !important;
+  text-shadow: -2px 2px 4px #000;
+  border-bottom: 1px solid #9B59B6 !important;
+}
+.retro-bg .cancion:hover {
+  background: #833abe !important;
+}
+.retro-bg .reproductor {
+  background: #1A1A2E;
+  border-top: 1px solid #9B59B6;
+}
+.retro-bg .barra-progreso {
+  background-color: #fff;
+}
+.retro-bg .barra-relleno {
+  background-color: #833abe;
+}
+.retro-bg .tiempo-restante, .retro-bg .tiempo-transcurrido {
+  color: #fff;
+}
+.retro-bg .handle {
+  background-color: #833abe;
+}
+.retro-bg #display-cancion img {
+  border: 3px solid #833abe;
+}
+.retro-bg #display-cancion h2 {
+  color: #fff;
+}
+.retro-bg .iconos-volumen svg {
+  stroke: #fff;
+}
+.retro-bg .iconos-volumen svg:active {
+  stroke: #833abe;
+}
+.retro-bg .control-volumen {
+  accent-color: #833abe;
+}
+.retro-bg #icono-repetir-1 {
+  color: #fff;
+}
+.retro-bg .siguiente-cancion, .retro-bg .cancion-anterior, .retro-bg .play-music, .retro-bg .stop-music {
+  stroke: #fff;
+  fill: #fff;
+}
+.retro-bg .siguiente-cancion:active, .retro-bg .cancion-anterior:active, .retro-bg .play-music:active, .retro-bg .stop-music:active {
+  stroke: #833abe;
+  fill: #833abe;
+}
+.retro-bg .repetir-container svg {
+  stroke: #fff;
+}
+
+/*# sourceMappingURL=app.css.map */

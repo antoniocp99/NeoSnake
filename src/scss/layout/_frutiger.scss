@@ -1,0 +1,224 @@
+.frutiger-bg {
+
+.recognition-btn, #tema-title, .board-bg, .btn-mando, .btn-musica button, .dificultad-menu p {
+    background: radial-gradient(circle, rgb(0, 208, 255) 0%, rgb(34, 145, 176) 100%);
+    box-shadow:
+    inset 0 8px 12px rgba(255, 255, 255, 0.15),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgb(0, 90, 110) !important;
+    text-shadow:
+    1px 1px 2px rgba(0, 50, 70, 0.8),
+    0 0 1px rgba(255, 255, 255, 0.2);
+    transition: .3s;
+    box-shadow: -2px 2px 5px #424242;
+
+
+    &:hover {
+        background: rgb(141, 240, 255) !important;
+    }
+}
+
+.score, .best-score {
+    border: 1px solid rgb(0, 90, 110) !important;
+    box-shadow: -4px 4px 4px #262626;
+}
+
+#gameBoard {
+    border: 3px solid rgb(61, 209, 242);
+    box-shadow: 0px 0px 10px 6px rgb(0, 90, 110);
+}
+
+.comandos-voz-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: -4px 4px 10px #424242;
+    border: 3px solid #f6f6f6;
+
+    h2 {
+        background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+        color: #000;
+        border-bottom: 1px solid rgb(0, 90, 110);
+    }
+
+    .comandos {
+        color: #000;
+        scrollbar-color: #fff #262626;
+
+        .comando {
+            border-bottom: 1px solid #fff;
+            color: #fff;
+            text-shadow: -2px 2px 4px #000;
+
+            p:first-child {
+                background: transparent;
+            }
+        }
+    }
+}
+
+.desc-comandos {
+    background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+    font-weight: bold;
+    border-bottom: 1px solid rgb(0, 90, 110);
+
+    p:first-child {
+        border-right: 1px solid rgb(0, 90, 110);
+    }
+}
+
+.controles-container {
+    box-shadow: -4px 4px 8px #424242;
+    border: 2px solid #f6f6f6;
+
+
+    .controles {
+
+        .seleccion-controles {
+            border-bottom: 1px solid rgb(0, 90, 110);
+            background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+
+        }
+    }
+}
+
+
+
+.icono-control {
+    border-bottom: 1px solid rgb(0, 90, 110);
+    background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+
+
+.def-controles {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    text-shadow: -2px 2px 4px #000;
+    scrollbar-color: #fff #262626;
+}
+
+
+.icono-control-2 {
+    background-color: transparent;  
+}
+
+.menu-temas {
+    border: 2px solid rgb(0, 90, 110);
+}
+
+.colores-board {
+    border: 2px solid rgb(0, 90, 110);
+}
+
+.dificultades {
+    background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+    color: #000;
+    border: 2px solid rgb(0, 90, 110);
+
+    .dificultad {
+
+        &:hover {
+        background: radial-gradient(circle, rgb(0, 208, 255) 0%, rgb(34, 145, 176) 100%) !important;
+        }
+    }
+}
+
+
+.playlist-container {
+    border: 2px solid #f6f6f6;
+    border-bottom: none;
+}
+
+
+#menu-playlist-btn {
+    background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+
+    p {
+        color: #000;
+    }
+
+    svg {
+        stroke: #000;
+    }
+}
+
+.menu-playlist-container {
+    background-color: transparent;
+}
+
+.cancion {
+    background: rgb(0, 109, 125) !important;
+    text-shadow: -2px 2px 4px #000;
+
+    &:hover {
+        background: rgb(44, 227, 255) !important;
+    }
+}
+
+.reproductor {
+    background: radial-gradient(circle, #ffffff 0%, #f6f6f6 60%, #e0e0e0 100%);
+}
+
+.barra-progreso {
+    background-color: #262626;
+}
+
+.barra-relleno {
+    background-color: rgb(44, 227, 255);
+}
+
+.tiempo-restante, .tiempo-transcurrido {
+    color: #000;
+}
+
+.handle {
+    background-color: rgb(7, 135, 154);
+}
+
+#display-cancion {
+
+    img {
+        border: 3px solid rgb(44, 227, 255);
+    }
+
+    h2 {
+        color: #000;
+    }
+}
+
+
+    .iconos-volumen {
+            svg {
+                stroke: #000;
+
+                &:active {
+                    stroke: rgb(49, 217, 255);
+                }
+            }
+    }
+
+    .control-volumen {
+        accent-color: rgb(49, 217, 255);
+    }
+
+    #icono-repetir-1 {
+        color: #000;
+    }
+
+    .siguiente-cancion, .cancion-anterior, .play-music, .stop-music {
+        stroke: #000;
+        fill: #000;
+
+    &:active {
+        stroke: rgb(49, 217, 255);
+        fill: rgb(49, 217, 255);
+    }
+}
+
+.repetir-container {
+    
+    svg {
+        stroke: #000;
+    }
+}
+
+}

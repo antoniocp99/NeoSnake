@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="build/css/app.css">
+    <link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon">
+    <title>NeoSnake</title>
+</head>
+
+<body>
+    <div class="resolucion-permitida">
+
+    <div class="notificacion-mando-1 esconder-noti">
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icono-cerrar icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+        <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#ffffff"  stroke-width="1.25"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icono-mando-2 icon-tabler icons-tabler-outline icon-tabler-device-gamepad-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4z" /><path d="M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232" /><path d="M8 9v2" /><path d="M7 10h2" /><path d="M14 10h2" /></svg>
+        <p id="texto-noti">Conecte el mando y pulse cualquier botón para continuar</p>
+    </div>
+
+    <div class="container-juego">
+
+        <div class="container-izquierda">
+
+            <div class="botones-izquierda">
+
+            <div class="recognition-btn-container">
+            <button class="recognition-btn" id="start">Control por voz</button>
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="#ffffff"  class="icono-micro-recognition icon icon-tabler icons-tabler-filled icon-tabler-microphone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 9a1 1 0 0 1 1 1a8 8 0 0 1 -6.999 7.938l-.001 2.062h3a1 1 0 0 1 0 2h-8a1 1 0 0 1 0 -2h3v-2.062a8 8 0 0 1 -7 -7.938a1 1 0 1 1 2 0a6 6 0 0 0 12 0a1 1 0 0 1 1 -1m-7 -8a4 4 0 0 1 4 4v5a4 4 0 1 1 -8 0v-5a4 4 0 0 1 4 -4" /></svg>
+            </div>
+
+            <div class="btn-mando"><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#ffffff"  stroke-width="1.25"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icono-mando icon-tabler icons-tabler-outline icon-tabler-device-gamepad-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5h3.5a5 5 0 0 1 0 10h-5.5l-4.015 4.227a2.3 2.3 0 0 1 -3.923 -2.035l1.634 -8.173a5 5 0 0 1 4.904 -4.019h3.4z" /><path d="M14 15l4.07 4.284a2.3 2.3 0 0 0 3.925 -2.023l-1.6 -8.232" /><path d="M8 9v2" /><path d="M7 10h2" /><path d="M14 10h2" /></svg> <span>Control con mando</span> </div>
+            </div>
+        
+    <div class="botones-izquierda-abajo">
+
+        <div class="temas-container">
+            <div id="select-tema" class="select-tema">
+                <p id="tema-title">Cambiar tema
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                        class="arrow-down icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 9l6 6l6 -6" />
+                    </svg>
+                </p>
+
+                <div id="menu-temas" class="menu-temas-desplegar invisible">
+                    <div class="menu-temas">
+
+                        <div id="main" class="tema">
+                            <p>Principal</p>
+                        </div>
+
+                        <div id="frutiger" class="tema">
+                            <p>Frutiger</p>
+                        </div>
+
+                        <div id="retro" class="tema">
+                            <p>Retro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="board-bg-container">
+            <div class="board-bg"><span>Cambiar tablero</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  viewBox="0 0 24 24" fill="none"
+                        stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                        class="arrow-down-4 icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 9l6 6l6 -6" />
+                    </svg>
+            </div>
+                    <div class="colores-board invisible">
+                        <p class="color verde">Verde</p>
+                        <p class="color azul">Azul</p>
+                        <p class="color morado">Morado</p>
+                    </div>
+        </div>
+        </div>
+
+    <div class="comandos-voz-container oculto scale">
+            <h2>Comandos de voz</h2>
+
+        <div class="comandos">
+
+            <div class="desc-comandos">
+                <p>Comando</p>
+                <p>Acción</p>
+            </div>
+            <div class="comando">
+                <p>Jugar</p>
+                <p>Inicia el juego</p>
+            </div>
+            <div class="comando">
+                <p>Reiniciar</p>
+                <p>Reinicia el juego</p>
+            </div>
+            <div class="comando">
+                <p>Pausa</p>
+                <p>Pausa el juego</p>
+            </div>
+            <div class="comando">
+                <p>Continuar</p>
+                <p>Continúa el juego</p>
+            </div>
+            <div class="comando">
+                <p>Activar mando</p>
+                <p>Activa el control con mando</p>
+            </div>
+            <div class="comando">
+                <p>Controles de mando</p>
+                <p>Muestra los controles del mando</p>
+            </div>
+            <div class="comando">
+                <p>Controles de teclado</p>
+                <p>Muestra los controles del teclado</p>
+            </div>
+            <div class="comando">
+                <p>Controles de xbox</p>
+                <p>Muestra los controles con mando de xbox</p>
+            </div>
+            <div class="comando">
+                <p>Controles de playstation</p>
+                <p>Muestra los controles con mando de playstation</p>
+            </div>
+            <div class="comando">
+                <p>Cambiar tema</p>
+                <p>Muestra los temas disponibles</p>
+            </div>
+            <div class="comando">
+                <p>Principal</p>
+                <p>Cambia a tema Principal</p>
+            </div>
+            <div class="comando">
+                <p>Frutiger</p>
+                <p>Cambia a tema Frutiger</p>
+            </div>
+            <div class="comando">
+                <p>Retro</p>
+                <p>Cambia a tema Retro</p>
+            </div>
+            <div class="comando">
+                <p>Cerrar temas</p>
+                <p>Cierra el menú de temas</p>
+            </div>
+            <div class="comando">
+                <p>Cambiar tablero</p>
+                <p>Muestra los colores de tableros</p>
+            </div>
+            <div class="comando">
+                <p>Verde</p>
+                <p>Tablero verde</p>
+            </div>
+            <div class="comando">
+                <p>Azul</p>
+                <p>Tablero azul</p>
+            </div>
+            <div class="comando">
+                <p>Morado</p>
+                <p>Tablero morado</p>
+            </div>
+            <div class="comando">
+                <p>Tablero verde</p>
+                <p>Cambia el color del tablero a verde sin abrir el menú</p>
+            </div>
+            <div class="comando">
+                <p>Tablero azul</p>
+                <p>Cambia el color del tablero a azul sin abrir el menú</p>
+            </div>
+            <div class="comando">
+                <p>Tablero morado</p>
+                <p>Cambia el color del tablero a morado sin abrir el menú</p>
+            </div>
+            <div class="comando">
+                <p>Cerrar tableros</p>
+                <p>Cierra el menú de colores del tablero</p>
+            </div>
+            <div class="comando">
+                <p>Dificultad</p>
+                <p>Muestra las dificultades</p>
+            </div>
+            <div class="comando">
+                <p>Fácil</p>
+                <p>Dificultad fácil</p>
+            </div>
+            <div class="comando">
+                <p>Normal</p>
+                <p>Dificultad normal</p>
+            </div>
+            <div class="comando">
+                <p>Difícil</p>
+                <p>Dificultad difícil</p>
+            </div>
+            <div class="comando">
+                <p>Modo fácil</p>
+                <p>Dificultad fácil</p>
+            </div>
+            <div class="comando">
+                <p>Modo normal</p>
+                <p>Dificultad normal</p>
+            </div>
+            <div class="comando">
+                <p>Modo difícil</p>
+                <p>Dificultad difícil</p>
+            </div>
+            <div class="comando">
+                <p>Cerrar menú</p>
+                <p>Cierra el menú de dificulatdes</p>
+            </div>
+            <div class="comando">
+                <p>Con sonido</p>
+                <p>Activa el sonido</p>
+            </div>
+            <div class="comando">
+                <p>Sin sonido</p>
+                <p>Desactiva el sonido</p>
+            </div>
+            <div class="comando">
+                <p>Activar música</p>
+                <p>Activa el menú de canciones</p>
+            </div>
+            <div class="comando">
+                <p>"Nombre de la canción"</p>
+                <p>Suena la canción nombrada (puede tardar unos segundos)</p>
+            </div>
+            <div class="comando">
+                <p>Esconder música</p>
+                <p>Oculta el menú de canciones</p>
+            </div>
+            <div class="comando">
+                <p>Mostrar música</p>
+                <p>Muestra el menú de canciones</p>
+            </div>
+            <div class="comando">
+                <p>Parar música</p>
+                <p>Para la canción actual</p>
+            </div>
+            <div class="comando">
+                <p>Reproducir música</p>
+                <p>Reanuda la canción actual</p>
+            </div>
+            <div class="comando">
+                <p>Siguiente</p>
+                <p>Siguiente canción</p>
+            </div>
+            <div class="comando">
+                <p>Anterior</p>
+                <p>Canción anterior</p>
+            </div>
+            <div class="comando">
+                <p>Bajar volumen</p>
+                <p>Mutea la música</p>
+            </div>
+            <div class="comando">
+                <p>Subir volumen</p>
+                <p>Desmutea la música</p>
+            </div>
+            <div class="comando">
+                <p>Repetir</p>
+                <p>Repite la canción actual</p>
+            </div>
+            <div class="comando">
+                <p>Cancelar repetición</p>
+                <p>Cancela la repetición de la canción actual</p>
+            </div>
+            <div class="comando">
+                <p>Quitar música</p>
+                <p>Desactiva la música</p>
+            </div>
+
+        </div>
+    </div>
+
+
+        <div class="best-score">
+            <p>Mejor Puntuación: <span id="max-score"></span></p>
+        </div>
+
+        </div>
+
+
+        <div class="container-centro">
+            <img class="snake-logo" id="snake-logo" src="src/img/snake.png" alt="snake logo">
+            <img class="snake-logo" id="snake-logo-2" src="src/img/snake.png" alt="snake logo">
+
+            <div id="cartel-gameover" class="invisible">
+                <div class="gameover-container">
+                    <div class="gameover">
+                        <h2>Fin de partida</h2>
+                        <div>
+                            <h2>Tiempo total de ronda:</h2>
+                            <p id="tiempo-gameover"></p>
+                        </div>
+                        <div>
+                            <h2>Puntuación total:</h2>
+                            <p id="score-gameover"></p>
+                        </div>
+                        <div>
+                            <h2>Mejor puntuación:</h2>
+                            <p id="max-score-gameover"></p>
+                        </div>
+                        <h3>Pulsa en "Reiniciar" para volver a jugar</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cartel-pausa" class="invisible">
+                <div class="pause-menu-container">
+                    <div class="pause-menu">
+                        <h2>Pausa</h2>
+                        <div class="tiempo">
+                            <h3>Duración actual de la ronda:</h3>
+                            <p id="tiempo-total"></p>
+                        </div>
+                        <div class="puntuacion">
+                            <h3>Puntuación actual:</h3>
+                            <p id="score-pausa"></p>
+                        </div>
+                        <div class="mejor-puntuacion">
+                            <h3>Mejor puntuacion:</h3>
+                            <p id="max-score-pausa"></p>
+                        </div>
+                        <div class="btn-continuar">
+                            <span>Continuar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="gameContainer">
+                <canvas id="gameBoard" width="500" height="500"></canvas>
+                <div class="score">
+                    <p>Puntuación:</p>
+                    <div id="scoreText">0</div>
+                </div>
+            </div>
+
+            <div class="game-btns">
+                <div class="play-btn-container">
+                    <button id="resetBtn"><span id="playText">JUGAR</span><span id="resetText"
+                            class="oculto">REINICIAR</span></button>
+                </div>
+
+                <div class="botones-pausa">
+                    <button id="pausa"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                            viewBox="0 0 24 24" fill="currentColor"
+                            class="icon icon-tabler icons-tabler-filled icon-tabler-player-pause">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+                            <path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+                        </svg></button>
+                    <button id="reanudar" class="invisible"><svg xmlns="http://www.w3.org/2000/svg" width="30"
+                            height="30" viewBox="0 0 24 24" fill="currentColor"
+                            class="icon icon-tabler icons-tabler-filled icon-tabler-player-play">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
+                        </svg></button>
+                </div>
+            </div>
+
+            <div class="flecha oculto">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="#fff"  stroke-width="5"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+            </div>
+        </div>
+
+
+        <div class="container-derecha">
+
+            <div class="btn-musica">
+                <button><span id="text-btn-musica-1">Jugar con música</span><span class="invisible"
+                        id="text-btn-musica-2">Jugar sin música</span></button>
+            </div>
+
+            <div class="dificultad-menu">
+                <p><span id="dificultad-text">Dificultad</span> <svg xmlns="http://www.w3.org/2000/svg" width="20"
+                        height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        class="arrow-down-2 icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 9l6 6l6 -6" />
+                    </svg></p>
+                <div class="dificultades invisible">
+                    <div class="dificultad">Fácil</div>
+                    <div class="dificultad">Normal</div>
+                    <div class="dificultad">Difícil</div>
+                </div>
+            </div>
+
+            <div class="audio">
+                <div id="activar-audio" class="audio__container">
+                    <span class="color-desactivado">Activar Sonido</span>
+
+                    <svg class="color-desactivado" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-volume-off">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M15 8a5 5 0 0 1 1.912 4.934m-1.377 2.602a5 5 0 0 1 -.535 .464" />
+                        <path d="M17.7 5a9 9 0 0 1 2.362 11.086m-1.676 2.299a9 9 0 0 1 -.686 .615" />
+                        <path
+                            d="M9.069 5.054l.431 -.554a.8 .8 0 0 1 1.5 .5v2m0 4v8a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l1.294 -1.664" />
+                        <path d="M3 3l18 18" />
+                    </svg>
+                </div>
+
+                <div id="desactivar-audio" class="audio__container oculto">
+                    <span class="desactivar">Desactivar Sonido</span>
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-volume">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M15 8a5 5 0 0 1 0 8" />
+                        <path d="M17.7 5a9 9 0 0 1 0 14" />
+                        <path
+                            d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="controles-container">
+                <div class="controles">
+                    <div class="seleccion-controles">
+                        <div class="icono-teclado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#2f7889" d="m4.28 86.4l-.27 4.37c-.14 2.48 1.71 3.38 3.51 3.38h112.95c1.8 0 3.66-.65 3.53-3.53l-.27-4.22z"/><path fill="#4a4c4d" d="M120.47 90.79H7.53c-1.8 0-3.32-1.52-3.32-3.32l2.94-50.31c0-1.9 1.52-3.32 3.32-3.32h107.07c1.8 0 3.32 1.52 3.32 3.32l2.94 50.31c0 1.8-1.52 3.32-3.33 3.32"/><path fill="#2f7889" d="M12.47 47.95c0 .98.69 1.67 1.57 1.67h4.67c.88 0 1.57-.78 1.57-1.67l.14-2.3h-7.74zm11.76 0c0 .98.69 1.67 1.57 1.67h4.6c.99 0 1.57-.7 1.57-1.67v-2.3h-7.71zm11.07 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.65 1.67-1.67v-2.3H35.3zm11.26 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.6 1.67-1.67v-2.3h-7.94zm11.17 0c0 .98.65 1.67 1.67 1.67H64c.88 0 1.67-.51 1.67-1.67v-2.3h-7.94zm11.27 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.51 1.67-1.67v-2.3H69zm11.17 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.62-.42 1.67-1.67v-2.3h-7.94zm11.16 0c0 .98.78 1.67 1.67 1.67h4.81c1.03 0 1.85-.68 1.76-1.76l-.13-2.21h-8.11zm11.76 0c0 .98.78 1.67 1.67 1.67h8.87c.88 0 1.67-.69 1.67-1.67l-.16-2.3H103.1v2.3zm4.14 11.75c0 .88.78 1.67 1.67 1.67h5.44c.88 0 1.67-.69 1.67-1.67l-.1-1.49h-8.67v1.49zm-11.39 0c0 .88.69 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.27 0c.1.88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.16 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.27 0c.1.88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.17 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.17 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49H39.8zm-11.17 0c0 .88.69 1.67 1.57 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.84zm-16.81 0c0 .88.69 1.67 1.57 1.67h9.66c.88 0 1.57-.69 1.57-1.67v-1.49l-12.79-.03zm67.86 12.06c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.76 0c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62l-.01-1.37h-7.73zm-11.76 0c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.75 0c-.1.81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.76 0c-.1.81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.1h-7.74zm-21.26-.1c0 .91.69 1.72 1.57 1.72h13.49c.88 0 1.57-.71 1.57-1.72l.12-1.31H11.41zm80.56.1c.1 1.01.78 1.72 1.67 1.72h21.33c.88 0 1.67-.71 1.67-1.72l-.01-1.41l-24.68.05zm17.43 13.47h6.13c.88 0 1.67-.72 1.67-1.74v-1.55h-9.47v1.55c0 .93.79 1.74 1.67 1.74m-12.85 0h5.2c.88 0 1.67-.72 1.67-1.74v-1.63l-8.53.08v1.55c-.01.93.68 1.74 1.66 1.74m-57.61 0h49.96c.88 0 1.67-.72 1.67-1.74v-1.55h-53.3l.01 1.55c0 1.19.78 1.74 1.66 1.74m-12.6 0h5.06c.88 0 1.67-.72 1.67-1.74v-1.55l-8.2.18l.01 1.37c-.04.99.58 1.74 1.46 1.74m-14.14 0h6.41c.88 0 1.57-.72 1.57-1.74v-1.55h-9.54v1.55c-.01.93.67 1.74 1.56 1.74"/><path fill="#fff" d="M18.78 47.9h-4.6c-.88 0-1.57-.65-1.57-1.59l.45-4.39c0-.84.69-1.59 1.57-1.59h4.6c.88 0 1.57.65 1.57 1.59l-.45 4.39c0 .84-.69 1.59-1.57 1.59m11.62 0h-4.6c-.88 0-1.57-.65-1.57-1.59l.17-4.39c0-.84.69-1.59 1.57-1.59h4.43c.88 0 1.57.65 1.57 1.59v4.39c0 .98-.59 1.59-1.57 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01.84-.79 1.59-1.67 1.59m11.26 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c0 .95-.79 1.59-1.67 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59H64c.88 0 1.67.65 1.67 1.59v4.39c0 .84-.79 1.59-1.67 1.59m11.27 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01.99-.79 1.59-1.67 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01 1.01-.79 1.59-1.67 1.59m11.37 0H93c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59l.2 4.39c0 .84-.78 1.59-1.66 1.59m15.69 0h-8.74c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h8.52c.88 0 1.67.65 1.67 1.59l.22 4.39c-.01.84-.79 1.59-1.67 1.59m-4.61 11.88h5.44c.88 0 1.67-.65 1.67-1.59l-.31-4.39c0-.84-.69-1.59-1.67-1.59h-5.12c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.78 1.59 1.66 1.59m-11.38 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.69 1.59 1.67 1.59m-11.27 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.1.84.79 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.01.84.79 1.59 1.67 1.59m-11.26 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.1.84.78 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-11.27 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.57.65-1.57 1.59v4.39c0 .84.69 1.59 1.57 1.59m-16.81 0h9.66c.88 0 1.57-.65 1.57-1.59V53.8c0-.84-.69-1.59-1.57-1.59h-9.31c-.88 0-1.57.65-1.57 1.59l-.35 4.39c0 .84.69 1.59 1.57 1.59M81.24 71.7h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c.01.74.69 1.49 1.57 1.49m-11.75 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c0 .74.69 1.49 1.57 1.49m-11.76 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c0 .74.69 1.49 1.57 1.49m-11.76 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c.01.78.69 1.49 1.57 1.49m-11.75 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c-.1.74.69 1.49 1.57 1.49m-21.26 0h13.62c.88 0 1.57-.65 1.57-1.59l.29-4.39c0-.84-.69-1.59-1.57-1.59H13.19c-.88 0-1.57.65-1.57 1.59l-.23 4.39c0 .84.69 1.59 1.57 1.59m80.6.09h21.38c.88 0 1.67-.65 1.67-1.59l-.34-4.67c0-.84-.69-1.59-1.67-1.59H93.31c-.88 0-1.67.65-1.67 1.59l.25 4.67c.1.94.79 1.59 1.67 1.59m15.82 11.74h6.13c.88 0 1.67-.65 1.67-1.59l-.29-4.39c0-.84-.69-1.59-1.67-1.59h-5.84c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-12.85 0h5.2c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.67-1.59h-5.2c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.69 1.59 1.67 1.59m-57.61 0h49.96c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.67-1.59H38.92c-.88 0-1.67.65-1.67 1.59v4.39c-.08 1.02.79 1.59 1.67 1.59m-12.6 0h5.06c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.57-1.59l-5.09.02c-.88 0-1.57.65-1.57 1.59l.03 4.37c-.03.89.59 1.59 1.47 1.59m-14.14 0h6.41c.88 0 1.57-.65 1.57-1.59v-4.39c0-.84-.69-1.59-1.57-1.59h-5.98c-.88 0-1.57.65-1.57 1.59l-.43 4.39c0 .84.68 1.59 1.57 1.59"/></svg>
+                        </div>
+                        <div class="icono-mando-control">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#464c4f" d="M19.64 35.33c.09-.26-.09-4.82 2.45-8.41s5.87-4.12 8.33-4.56c2.98-.53 10.17-1.4 11.31 1.05s.26 3.77 2.1 4.47s-1.49 4.82-1.49 4.82zm88.25-.09s.72-4.43-1.81-7.42c-3.8-4.51-9.75-5.97-15.38-5.97c-1.81 0-3.98.35-4.68 2.51c-.4 1.25-.68 2.77-1.56 2.94c-.87.18 17.73 5.93 23.43 7.94"/><path fill="#5e6268" d="M39.04 81.29c-2.99 2.32-6.96 18.32-13.17 22.55s-20.28 1.97-21.34-6.66c-.93-7.61.76-23.61 5-39.96s7.5-24.45 17.41-27.1c7.95-2.13 23.53-3.63 38.66-3.48c15.14.15 28.39.15 36.72 3.33c7.47 2.85 12.56 10.6 16.05 25.73c3.48 15.14 6.17 33.34 5.75 39.36c-.61 8.78-13.02 14.38-22.25 7.57c-7.35-5.42-8.78-19.22-12.56-21.19s-47.55-2.27-50.27-.15"/><path fill="#9e9e9e" d="M93.25 77.17c-.72.9.94 2.24 2.12 5.17s4.22 12.63 7.17 15.34c3.68 3.37 6.55 2.74 7.11 1.68s-2.62-3.8-6.36-9.91s-8.54-14.15-10.04-12.28m-82.73-2.49c-1.11.2-4.05 14.96-1.87 21.2c1.82 5.2 8.79 5.49 11.41 4.74c5.22-1.49 6.86-6.55 5.67-7.11c-1.18-.56-5.32 3.4-9.23 1.56c-4.36-2.06-4.3-7.86-4.86-13.72c-.5-5.28-.06-6.86-1.12-6.67m27.49-32.73c-.41 0-4.01-.02-4.01-.02l.02-4.35s.08-3.51-3.68-3.43c-3.37.07-3.3 2.88-3.3 3.43s-.02 4.32-.02 4.32s-3.82-.04-4.53-.02s-3.37.06-3.37 3.49c0 3.24 2.75 3.47 3.37 3.49s4.51.02 4.51.02s-.03 3.63-.02 4.22s.12 3.37 3.49 3.37c3.68 0 3.49-3.37 3.49-3.37l.02-4.19s3.44.03 4.04.02c.86-.02 3.39-.25 3.43-3.68c.03-3.39-3.02-3.3-3.44-3.3"/><circle cx="48.4" cy="62.42" r="8.54" fill="#afafaf"/><circle cx="77.75" cy="62.55" r="8.54" fill="#afafaf"/><circle cx="48.39" cy="62.21" r="5.71" fill="#c8c8c8"/><circle cx="77.75" cy="62.4" r="5.71" fill="#c8c8c8"/><circle cx="85.82" cy="45.67" r="4.6" fill="#2086fa"/><circle cx="94.94" cy="54.48" r="4.6" fill="#06ac48"/><circle cx="104.12" cy="46.4" r="4.6" fill="#f72e26"/><circle cx="95.02" cy="37.01" r="4.6" fill="#fdb700"/></svg>
+                        </div>
+                    </div>
+                    <div class="teclado">
+                        <div class="icono-control">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#2f7889" d="m4.28 86.4l-.27 4.37c-.14 2.48 1.71 3.38 3.51 3.38h112.95c1.8 0 3.66-.65 3.53-3.53l-.27-4.22z"/><path fill="#4a4c4d" d="M120.47 90.79H7.53c-1.8 0-3.32-1.52-3.32-3.32l2.94-50.31c0-1.9 1.52-3.32 3.32-3.32h107.07c1.8 0 3.32 1.52 3.32 3.32l2.94 50.31c0 1.8-1.52 3.32-3.33 3.32"/><path fill="#2f7889" d="M12.47 47.95c0 .98.69 1.67 1.57 1.67h4.67c.88 0 1.57-.78 1.57-1.67l.14-2.3h-7.74zm11.76 0c0 .98.69 1.67 1.57 1.67h4.6c.99 0 1.57-.7 1.57-1.67v-2.3h-7.71zm11.07 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.65 1.67-1.67v-2.3H35.3zm11.26 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.6 1.67-1.67v-2.3h-7.94zm11.17 0c0 .98.65 1.67 1.67 1.67H64c.88 0 1.67-.51 1.67-1.67v-2.3h-7.94zm11.27 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.67-.51 1.67-1.67v-2.3H69zm11.17 0c0 .98.78 1.67 1.67 1.67h4.6c.88 0 1.62-.42 1.67-1.67v-2.3h-7.94zm11.16 0c0 .98.78 1.67 1.67 1.67h4.81c1.03 0 1.85-.68 1.76-1.76l-.13-2.21h-8.11zm11.76 0c0 .98.78 1.67 1.67 1.67h8.87c.88 0 1.67-.69 1.67-1.67l-.16-2.3H103.1v2.3zm4.14 11.75c0 .88.78 1.67 1.67 1.67h5.44c.88 0 1.67-.69 1.67-1.67l-.1-1.49h-8.67v1.49zm-11.39 0c0 .88.69 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.27 0c.1.88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.16 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.27 0c.1.88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.17 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.94zm-11.17 0c0 .88.78 1.67 1.67 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49H39.8zm-11.17 0c0 .88.69 1.67 1.57 1.67h4.6c.88 0 1.67-.69 1.67-1.67v-1.49h-7.84zm-16.81 0c0 .88.69 1.67 1.57 1.67h9.66c.88 0 1.57-.69 1.57-1.67v-1.49l-12.79-.03zm67.86 12.06c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.76 0c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62l-.01-1.37h-7.73zm-11.76 0c0 .81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.75 0c-.1.81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.37h-7.74zm-11.76 0c-.1.81.69 1.62 1.57 1.62h4.6c.88 0 1.57-.71 1.57-1.62v-1.1h-7.74zm-21.26-.1c0 .91.69 1.72 1.57 1.72h13.49c.88 0 1.57-.71 1.57-1.72l.12-1.31H11.41zm80.56.1c.1 1.01.78 1.72 1.67 1.72h21.33c.88 0 1.67-.71 1.67-1.72l-.01-1.41l-24.68.05zm17.43 13.47h6.13c.88 0 1.67-.72 1.67-1.74v-1.55h-9.47v1.55c0 .93.79 1.74 1.67 1.74m-12.85 0h5.2c.88 0 1.67-.72 1.67-1.74v-1.63l-8.53.08v1.55c-.01.93.68 1.74 1.66 1.74m-57.61 0h49.96c.88 0 1.67-.72 1.67-1.74v-1.55h-53.3l.01 1.55c0 1.19.78 1.74 1.66 1.74m-12.6 0h5.06c.88 0 1.67-.72 1.67-1.74v-1.55l-8.2.18l.01 1.37c-.04.99.58 1.74 1.46 1.74m-14.14 0h6.41c.88 0 1.57-.72 1.57-1.74v-1.55h-9.54v1.55c-.01.93.67 1.74 1.56 1.74"/><path fill="#fff" d="M18.78 47.9h-4.6c-.88 0-1.57-.65-1.57-1.59l.45-4.39c0-.84.69-1.59 1.57-1.59h4.6c.88 0 1.57.65 1.57 1.59l-.45 4.39c0 .84-.69 1.59-1.57 1.59m11.62 0h-4.6c-.88 0-1.57-.65-1.57-1.59l.17-4.39c0-.84.69-1.59 1.57-1.59h4.43c.88 0 1.57.65 1.57 1.59v4.39c0 .98-.59 1.59-1.57 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01.84-.79 1.59-1.67 1.59m11.26 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c0 .95-.79 1.59-1.67 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59H64c.88 0 1.67.65 1.67 1.59v4.39c0 .84-.79 1.59-1.67 1.59m11.27 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01.99-.79 1.59-1.67 1.59m11.17 0h-4.6c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59v4.39c-.01 1.01-.79 1.59-1.67 1.59m11.37 0H93c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h4.6c.88 0 1.67.65 1.67 1.59l.2 4.39c0 .84-.78 1.59-1.66 1.59m15.69 0h-8.74c-.88 0-1.67-.65-1.67-1.59v-4.39c0-.84.69-1.59 1.67-1.59h8.52c.88 0 1.67.65 1.67 1.59l.22 4.39c-.01.84-.79 1.59-1.67 1.59m-4.61 11.88h5.44c.88 0 1.67-.65 1.67-1.59l-.31-4.39c0-.84-.69-1.59-1.67-1.59h-5.12c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.78 1.59 1.66 1.59m-11.38 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.69 1.59 1.67 1.59m-11.27 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.1.84.79 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.01.84.79 1.59 1.67 1.59m-11.26 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c.1.84.78 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-11.17 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-11.27 0h4.6c.88 0 1.67-.65 1.67-1.59V53.8c0-.84-.69-1.59-1.67-1.59h-4.6c-.88 0-1.57.65-1.57 1.59v4.39c0 .84.69 1.59 1.57 1.59m-16.81 0h9.66c.88 0 1.57-.65 1.57-1.59V53.8c0-.84-.69-1.59-1.57-1.59h-9.31c-.88 0-1.57.65-1.57 1.59l-.35 4.39c0 .84.69 1.59 1.57 1.59M81.24 71.7h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c.01.74.69 1.49 1.57 1.49m-11.75 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c0 .74.69 1.49 1.57 1.49m-11.76 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c0 .74.69 1.49 1.57 1.49m-11.76 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c.01.78.69 1.49 1.57 1.49m-11.75 0h4.6c.88 0 1.57-.65 1.57-1.49v-4.39c0-.84-.69-1.49-1.57-1.49h-4.6c-.88 0-1.57.65-1.57 1.49v4.39c-.1.74.69 1.49 1.57 1.49m-21.26 0h13.62c.88 0 1.57-.65 1.57-1.59l.29-4.39c0-.84-.69-1.59-1.57-1.59H13.19c-.88 0-1.57.65-1.57 1.59l-.23 4.39c0 .84.69 1.59 1.57 1.59m80.6.09h21.38c.88 0 1.67-.65 1.67-1.59l-.34-4.67c0-.84-.69-1.59-1.67-1.59H93.31c-.88 0-1.67.65-1.67 1.59l.25 4.67c.1.94.79 1.59 1.67 1.59m15.82 11.74h6.13c.88 0 1.67-.65 1.67-1.59l-.29-4.39c0-.84-.69-1.59-1.67-1.59h-5.84c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.79 1.59 1.67 1.59m-12.85 0h5.2c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.67-1.59h-5.2c-.88 0-1.67.65-1.67 1.59v4.39c0 .84.69 1.59 1.67 1.59m-57.61 0h49.96c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.67-1.59H38.92c-.88 0-1.67.65-1.67 1.59v4.39c-.08 1.02.79 1.59 1.67 1.59m-12.6 0h5.06c.88 0 1.67-.65 1.67-1.59v-4.39c0-.84-.69-1.59-1.57-1.59l-5.09.02c-.88 0-1.57.65-1.57 1.59l.03 4.37c-.03.89.59 1.59 1.47 1.59m-14.14 0h6.41c.88 0 1.57-.65 1.57-1.59v-4.39c0-.84-.69-1.59-1.57-1.59h-5.98c-.88 0-1.57.65-1.57 1.59l-.43 4.39c0 .84.68 1.59 1.57 1.59"/></svg>
+                        </div>
+
+                        <div class="def-controles">
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover arriba</p>
+                                </div>
+                            </div>
+
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <svg style="transform: rotate(-90deg)"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover izquierda</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <svg style="transform: rotate(180deg)"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover abajo</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <svg style="transform: rotate(90deg)" xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-up"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 5l0 14" /><path d="M16 9l-4 -4" /><path d="M8 9l4 -4" /></svg>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover derecha</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>W</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover arriba</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>A</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover izquierda</p>
+                                </div>
+                            </div>
+
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>S</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover abajo</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>D</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover derecha</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Intro</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Jugar/Reiniciar/Pausar/Reanudar</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Espacio</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Jugar/Reiniciar/Pausar/Reanudar</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Esc</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Pausar/Reanudar</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Q</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar control por voz</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>E</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover arriba</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>M</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover arriba</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="mando invisible">
+                        <div class="icono-control">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#464c4f" d="M19.64 35.33c.09-.26-.09-4.82 2.45-8.41s5.87-4.12 8.33-4.56c2.98-.53 10.17-1.4 11.31 1.05s.26 3.77 2.1 4.47s-1.49 4.82-1.49 4.82zm88.25-.09s.72-4.43-1.81-7.42c-3.8-4.51-9.75-5.97-15.38-5.97c-1.81 0-3.98.35-4.68 2.51c-.4 1.25-.68 2.77-1.56 2.94c-.87.18 17.73 5.93 23.43 7.94"/><path fill="#5e6268" d="M39.04 81.29c-2.99 2.32-6.96 18.32-13.17 22.55s-20.28 1.97-21.34-6.66c-.93-7.61.76-23.61 5-39.96s7.5-24.45 17.41-27.1c7.95-2.13 23.53-3.63 38.66-3.48c15.14.15 28.39.15 36.72 3.33c7.47 2.85 12.56 10.6 16.05 25.73c3.48 15.14 6.17 33.34 5.75 39.36c-.61 8.78-13.02 14.38-22.25 7.57c-7.35-5.42-8.78-19.22-12.56-21.19s-47.55-2.27-50.27-.15"/><path fill="#9e9e9e" d="M93.25 77.17c-.72.9.94 2.24 2.12 5.17s4.22 12.63 7.17 15.34c3.68 3.37 6.55 2.74 7.11 1.68s-2.62-3.8-6.36-9.91s-8.54-14.15-10.04-12.28m-82.73-2.49c-1.11.2-4.05 14.96-1.87 21.2c1.82 5.2 8.79 5.49 11.41 4.74c5.22-1.49 6.86-6.55 5.67-7.11c-1.18-.56-5.32 3.4-9.23 1.56c-4.36-2.06-4.3-7.86-4.86-13.72c-.5-5.28-.06-6.86-1.12-6.67m27.49-32.73c-.41 0-4.01-.02-4.01-.02l.02-4.35s.08-3.51-3.68-3.43c-3.37.07-3.3 2.88-3.3 3.43s-.02 4.32-.02 4.32s-3.82-.04-4.53-.02s-3.37.06-3.37 3.49c0 3.24 2.75 3.47 3.37 3.49s4.51.02 4.51.02s-.03 3.63-.02 4.22s.12 3.37 3.49 3.37c3.68 0 3.49-3.37 3.49-3.37l.02-4.19s3.44.03 4.04.02c.86-.02 3.39-.25 3.43-3.68c.03-3.39-3.02-3.3-3.44-3.3"/><circle cx="48.4" cy="62.42" r="8.54" fill="#afafaf"/><circle cx="77.75" cy="62.55" r="8.54" fill="#afafaf"/><circle cx="48.39" cy="62.21" r="5.71" fill="#c8c8c8"/><circle cx="77.75" cy="62.4" r="5.71" fill="#c8c8c8"/><circle cx="85.82" cy="45.67" r="4.6" fill="#2086fa"/><circle cx="94.94" cy="54.48" r="4.6" fill="#06ac48"/><circle cx="104.12" cy="46.4" r="4.6" fill="#f72e26"/><circle cx="95.02" cy="37.01" r="4.6" fill="#fdb700"/></svg>
+
+                            <select id="selector-mando">
+                                <option value="xbox">Xbox</option>
+                                <option value="playstation">Playstation</option>
+                            </select>
+                        </div>
+
+                        <div class="img-control">
+                            <div class="container-img-mando xbox-mando">
+                                <img class="mando-xbox" src="src/img/xbox.png" alt="img mando xbox">
+                            </div>
+
+                            <div class="container-img-mando ps5 oculto">
+                                <img class="mando-ps5" src="src/img/ps5.webp" alt="img mando ps5">
+                            </div>
+                        </div>
+
+                        <div class="def-controles xbox">
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Pad</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover Snake</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L - Joystick</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover Snake</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/start-xbox.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Pausar/Reanudar</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/a.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Jugar/Reiniciar/Reanudar</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/b.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú dificultad</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/x-xb.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar/Desactivar sonido</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/y.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar/Desactivar menú música</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>RT</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Ocultar/Mostrar menú música</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>RB</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Siguiente canción</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>LB</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Anterior canción</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>LT</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar control por voz</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L3</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú temas</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>R3</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú tablero</p>
+                                </div>
+                            </div>
+
+                        </div> <!-- xbox -->
+
+                        <div class="def-controles playstation invisible">
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>Pad</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover Snake</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L - Joystick</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Mover Snake</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/start-ps.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Pausar/Reanudar</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/x-ps.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Jugar/Reiniciar/Reanudar</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/circulo.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú dificultad</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/cuadrado.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar/Desactivar sonido</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <img src="src/img/triangulo.png" alt="">
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar/Desactivar menú música</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>R2</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Ocultar/Mostrar menú música</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>R1</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Siguiente canción</p>
+                                </div>
+                            </div>
+                            
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L1</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Anterior canción</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L2</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Activar control por voz</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>L3</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú temas</p>
+                                </div>
+                            </div>
+
+                            <div class="control">
+                                <div class="icono-control-2">
+                                    <p>R3</p>
+                                </div>
+                                <div class="texto-control">
+                                    <p>Abrir/Cerrar menú tablero</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-ocultador oculto">
+        <div class="playlist-container esconder">
+            <div id="menu-playlist-btn">
+                <p>Playlist 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                        class="arrow-down-3 icon icon-tabler icons-tabler-outline icon-tabler-chevron-down">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 9l6 6l6 -6" />
+                    </svg>
+                </p>
+            </div>
+            <div class="menu-playlist-container">
+                <div id="menu-playlist"></div>
+                <div id="reproductor-container">
+                    <div class="reproductor oculto-rep">
+
+                        <div id="display-cancion">
+                            <img class="girar-img-cancion" id="imagen-cancion" src="" alt="">
+                            <h2 id="titulo-cancion"></h2>
+                        </div>
+
+
+                        <span class="tiempo-transcurrido">0:00</span>
+
+                        <div class="barra-progreso">
+                            <div class="barra-relleno"></div>
+                            <div class="handle"></div>
+                        </div>
+
+                        <span class="tiempo-restante">0:00</span>
+
+                        <div class="controles">
+
+                            <div title="Repetir canción" class="repetir-container">
+                                <svg id="repetir" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-repeat">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3" />
+                                    <path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3" />
+                                </svg>
+                                <span id="icono-repetir-1">1</span>
+                            </div>
+
+                            <div title="Canción anterior" class="anterior">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"
+                                    fill="#ffffff"
+                                    class="cancion-anterior icon icon-tabler icons-tabler-filled icon-tabler-player-skip-back">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7a1 1 0 0 0 1.504 -.864v-14a1 1 0 0 0 -1.504 -.864z" />
+                                    <path
+                                        d="M4 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z" />
+                                </svg>
+                            </div>
+
+                            <div title="Reproducir/Detener" class="play-stop">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                    fill="#ffffff" class="play-music icon">
+                                    <path
+                                        d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
+                                    fill="#ffffff" class="stop-music invisible icon">
+                                    <path
+                                        d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+                                    <path
+                                        d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z" />
+                                </svg>
+                            </div>
+
+                            <div title="Siguiente canción" class="siguiente">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"
+                                    fill="#ffffff"
+                                    class="siguiente-cancion icon icon-tabler icons-tabler-filled icon-tabler-player-skip-forward">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M3 5v14a1 1 0 0 0 1.504 .864l12 -7a1 1 0 0 0 0 -1.728l-12 -7a1 1 0 0 0 -1.504 .864z" />
+                                    <path
+                                        d="M20 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="volumen-container">
+                            <div class="volumen">
+                                <div title="Activar/Desactivar volumen" class="iconos-volumen">
+                                    <svg id="volume-on" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="icon icon-tabler icons-tabler-outline icon-tabler-volume">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M15 8a5 5 0 0 1 0 8" />
+                                        <path d="M17.7 5a9 9 0 0 1 0 14" />
+                                        <path
+                                            d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="volume-off" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="invisible icon icon-tabler icons-tabler-outline icon-tabler-volume-off">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M15 8a5 5 0 0 1 1.912 4.934m-1.377 2.602a5 5 0 0 1 -.535 .464" />
+                                        <path d="M17.7 5a9 9 0 0 1 2.362 11.086m-1.676 2.299a9 9 0 0 1 -.686 .615" />
+                                        <path
+                                            d="M9.069 5.054l.431 -.554a.8 .8 0 0 1 1.5 .5v2m0 4v8a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l1.294 -1.664" />
+                                        <path d="M3 3l18 18" />
+                                    </svg>
+                                </div>
+                                <input type="range" class="control-volumen" min="0" max="1" step="0.01" value="0.4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="elegir-cancion oculto">
+        <p>Diga el nombre de la canción que desea escuchar:</p>
+    </div>
+
+
+<div class="notificacion-voz-container">
+    <div class="notificacion-voz">
+        <p>Control por voz activado</p>
+    </div>
+</div>
+
+</div>
+
+<div class="resolucion-no-permitida invisible">
+    <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128"><path fill="#f2a600" d="m57.16 8.42l-52 104c-1.94 4.02-.26 8.85 3.75 10.79c1.08.52 2.25.8 3.45.81h104c4.46-.04 8.05-3.69 8.01-8.15a8.1 8.1 0 0 0-.81-3.45l-52-104a8.067 8.067 0 0 0-14.4 0"/><path fill="#ffcc32" d="m53.56 15.72l-48.8 97.4c-1.83 3.77-.25 8.31 3.52 10.14c.99.48 2.08.74 3.18.76h97.5a7.55 7.55 0 0 0 7.48-7.62a7.6 7.6 0 0 0-.78-3.28l-48.7-97.4a7.443 7.443 0 0 0-9.93-3.47a7.5 7.5 0 0 0-3.47 3.47"/><path fill="#424242" d="M64.36 34.02c4.6 0 8.3 3.7 8 8l-3.4 48c-.38 2.54-2.74 4.3-5.28 3.92a4.65 4.65 0 0 1-3.92-3.92l-3.4-48c-.3-4.3 3.4-8 8-8m0 64c3.31 0 6 2.69 6 6s-2.69 6-6 6s-6-2.69-6-6s2.69-6 6-6" opacity="0.2"/><linearGradient id="notoWarning0" x1="68" x2="68" y1="-1808.36" y2="-1887.05" gradientTransform="matrix(1 0 0 -1 -3.64 -1776.09)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#424242"/><stop offset="1" stop-color="#212121"/></linearGradient><path fill="url(#notoWarning0)" d="M64.36 34.02c4.6 0 8.3 3.7 8 8l-3.4 48c-.38 2.54-2.74 4.3-5.28 3.92a4.65 4.65 0 0 1-3.92-3.92l-3.4-48c-.3-4.3 3.4-8 8-8"/><linearGradient id="notoWarning1" x1="64.36" x2="64.36" y1="-1808.36" y2="-1887.05" gradientTransform="matrix(1 0 0 -1 0 -1772.11)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#424242"/><stop offset="1" stop-color="#212121"/></linearGradient><circle cx="64.36" cy="104.02" r="6" fill="url(#notoWarning1)"/><path fill="#fff170" d="M53.56 23.02c-1.2 1.5-21.4 41-21.4 41s-1.8 3 .7 4.7c2.3 1.6 4.4-.3 5.3-1.8s19.2-36.9 19.9-38.6c.6-1.87.18-3.91-1.1-5.4c-1.3-1.2-2.6-1-3.4.1"/><circle cx="31.36" cy="75.33" r="3.3" fill="#fff170"/></svg>
+    <img src="src/img/snake.png" alt="">
+    <p>NeoSnake no es compatible aún con resoluciones inferiores a <br>1920 x 1080</p>
+</div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/juego.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/sonido.js"></script>
+    <script src="js/musica.js"></script>
+    <script src="js/reproductor.js"></script>
+    <script src="js/gamepad.js"></script>
+    <script src="js/voz.js"></script>
+</body>
+
+</html>

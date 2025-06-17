@@ -1,0 +1,240 @@
+.retro-bg {
+
+.recognition-btn, #tema-title, .board-bg, .btn-mando, .btn-musica button, .dificultad-menu p {
+    background-color: rgb(11, 173, 209);
+    box-shadow:
+    inset 0 8px 12px rgba(255, 255, 255, 0.15),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid cyan !important;
+    text-shadow:
+    1px 1px 2px rgba(0, 50, 70, 0.8),
+    0 0 1px rgba(255, 255, 255, 0.2);
+    transition: .3s;
+    box-shadow: 0 0 15px cyan;
+
+
+    &:hover {
+        background: rgb(141, 240, 255) !important;
+    }
+}
+
+.score, .best-score {
+    border: 1px solid #6C3483 !important;
+    box-shadow: 0 0 15px #6C3483, 0 0 15px #6C3483 inset;
+    background: radial-gradient(circle, #520a83 0%, #210c36 100%);
+    color: cyan;
+    text-shadow: 0 0 15px cyan;
+
+}
+
+#gameBoard {
+    border: 3px solid rgb(61, 209, 242);
+    box-shadow: 0px 0px 10px 6px rgb(0, 90, 110);
+}
+
+.comandos-voz-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow:  0px 0px 10px #9B59B6;
+    border: 2px solid #9B59B6;
+
+    h2 {
+        background: #1A1A2E;
+        color: #ffffff;
+        border-bottom: 1px solid #9B59B6;
+    }
+
+    .comandos {
+        color: #fff;
+        scrollbar-color: #fff #1A1A2E;
+
+        .comando {
+            border-bottom: 1px solid #9B59B6;
+            color: #fff;
+            text-shadow: -2px 2px 4px #000;
+            background: #33045a;
+
+            p:first-child {
+                background: #33045a;
+                border-right: 1px solid #9B59B6;
+            }
+        }
+    }
+}
+
+.desc-comandos {
+    background: #1A1A2E;
+    font-weight: bold;
+    border-bottom: 1px solid #9B59B6;
+
+    p:first-child {
+        border-right: 1px solid #9B59B6;
+    }
+}
+
+.controles-container {
+    box-shadow: 0px 0px 15px #9B59B6;
+    border: 2px solid #9B59B6;
+
+
+    .controles {
+
+        .seleccion-controles {
+            border-bottom: 1px solid #9B59B6;
+            background: #1A1A2E;
+        }
+    }
+}
+
+.control {
+    border-bottom: 1px solid #9B59B6;
+}
+
+.icono-control {
+    border-bottom: 1px solid #9B59B6;
+    background: #1A1A2E;
+}
+
+
+.def-controles {
+    background-color: #33045a;
+    text-shadow: -2px 2px 4px #000;
+    scrollbar-color: #fff #1A1A2E;
+}
+
+
+.icono-control-2 {
+    background-color: #33045a;  
+    border-right: 1px solid #9B59B6;
+}
+
+.menu-temas {
+    border: 2px solid cyan;
+}
+
+.colores-board {
+    border: 2px solid cyan;
+}
+
+.dificultades {
+    background: #450085;
+    color: #fff;
+    border: 2px solid cyan;
+
+    .dificultad {
+
+        &:nth-child(2) {
+            border-top: 1px solid cyan;
+            border-bottom: 1px solid cyan;
+        }
+
+        &:hover {
+        background: #833abe !important;
+        }
+    }
+}
+
+
+.playlist-container {
+    border: 2px solid #9B59B6;
+    border-bottom: none;
+    box-shadow: 0 0 20px #9B59B6;
+}
+
+
+#menu-playlist-btn {
+    background: #1A1A2E;
+
+    p {
+        color: #fff;
+    }
+
+    svg {
+        stroke: #fff;
+    }
+}
+
+.menu-playlist-container {
+    background-color: transparent;
+    border-top: 1px solid #9B59B6;
+}
+
+.cancion {
+    background: #33045a !important;
+    text-shadow: -2px 2px 4px #000;
+    border-bottom: 1px solid #9B59B6 !important;
+
+    &:hover {
+        background: #833abe !important;
+    }
+}
+
+.reproductor {
+    background: #1A1A2E;
+    border-top: 1px solid #9B59B6;
+}
+
+.barra-progreso {
+    background-color: #fff;
+}
+
+.barra-relleno {
+    background-color: #833abe;
+}
+
+.tiempo-restante, .tiempo-transcurrido {
+    color: #fff;
+}
+
+.handle {
+    background-color: #833abe;
+}
+
+#display-cancion {
+
+    img {
+        border: 3px solid #833abe;
+    }
+
+    h2 {
+        color: #fff;
+    }
+}
+
+
+    .iconos-volumen {
+            svg {
+                stroke: #fff;
+
+                &:active {
+                    stroke: #833abe;
+                }
+            }
+    }
+
+    .control-volumen {
+        accent-color: #833abe;
+    }
+
+    #icono-repetir-1 {
+        color: #fff;
+    }
+
+    .siguiente-cancion, .cancion-anterior, .play-music, .stop-music {
+        stroke: #fff;
+        fill: #fff;
+
+    &:active {
+        stroke: #833abe;
+        fill: #833abe;
+    }
+}
+
+.repetir-container {
+    
+    svg {
+        stroke: #fff;
+    }
+}
+
+}
