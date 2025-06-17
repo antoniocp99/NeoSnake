@@ -22,7 +22,15 @@ NeoSnake es un juego retro inspirado en el clásico Snake, desarrollado desde ce
 
 ## 🖼️ Capturas de pantalla
 
-> Añade aquí screenshots del gameplay, la pantalla de inicio, o skins, si tienes.
+Tema principal:
+![main](https://github.com/user-attachments/assets/edacf455-ec29-473e-b794-63d3de93a036)
+
+Tema frutiger:
+![frutiger](https://github.com/user-attachments/assets/76e3710d-5107-4ae3-97b8-85c7d296deb9)
+
+Tema retro:
+![retro](https://github.com/user-attachments/assets/d16726cc-a644-4f4c-9a34-aab218f03580)
+
 
 📚 Aprendizajes
 Durante el desarrollo de NeoSnake reforcé:
@@ -39,3 +47,6 @@ Durante el desarrollo de NeoSnake reforcé:
 Desarrollado por Antonio Castizo Pérez
 📫 Contacto: antoniocastizo99@gmail.com
 🌐 Portfolio: [en construcción]
+
+Pruébalo:
+https://neosnake1.netlify.app/
